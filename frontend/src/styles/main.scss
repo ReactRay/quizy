@@ -1,0 +1,42 @@
+@use './globals' as *;
+@use './Pages/home';
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background-color: $color-button-bg;
+  color: $color-button-text;
+  border-radius: 100rem;
+  padding: 0.5rem 1rem;
+}
