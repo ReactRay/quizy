@@ -1,0 +1,19 @@
+@use './globals' as *;
+
+.btn {
+  background-color: $color-button-bg;
+  color: $color-button-text;
+  border-radius: 100rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.6s;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 3rem 4rem rgba($color: $color-dark, $alpha: 0.5);
+  }
+
+  &:active {
+    transform: translateY(0.2rem);
+    box-shadow: 0 1rem 1rem rgba($color: $color-dark, $alpha: 0.5);
+  }
+}

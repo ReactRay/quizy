@@ -1,0 +1,25 @@
+@use '../globals' as *;
+
+.login {
+  width: calc(100% - 10rem);
+  height: calc(100% - 10rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  background-color: rgba($color-box-bg, $alpha: 0.8);
+
+  .form {
+    border: 3px solid red;
+  }
+}
+
+$color-primary: #2d2926;
+$color-button-bg: #2d2926;
+$color-button-text: #ffffff;
+$color-box-bg: #f2e9e4;
+
+$color-grey: #777;
+$color-dark: #000;
+$color-white: #fff;

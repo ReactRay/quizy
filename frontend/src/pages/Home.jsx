@@ -1,4 +1,6 @@
 
+import { Login } from "../cmps/Login"
+
 export function Home() {
 
 
@@ -13,7 +15,7 @@ export function Home() {
                         <div className="right-side-container">
                             <h1><span>Quizzy</span> let us test you</h1>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam soluta libero saepe ea quisquam? Fuga aperiam similique architecto? Qui, veniam.</p>
-                            <button>Start</button>
+                            <button className='btn'>Start</button>
                         </div>
                     </div>
 
@@ -38,6 +40,8 @@ export function Home() {
 
 
             </div>
+
+            <Login />
 
         </section>
     )
