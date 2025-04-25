@@ -10,10 +10,16 @@
   border-radius: 8px;
   background-color: rgba($color-white, $alpha: 1);
   box-shadow: 0 3rem 7rem rgba($color-dark, $alpha: 0.5);
+  animation: slideUp 0.8s;
 
   display: flex;
   justify-content: center;
 
+  .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
   .form-container {
     margin-block: auto;
     flex: 1;
@@ -61,6 +67,52 @@
       object-fit: cover;
     }
   }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes expand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1.5s forwards;
+  animation-fill-mode: backwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.8s forwards;
+  animation-fill-mode: backwards;
 }
 
 $color-primary: #2d2926;

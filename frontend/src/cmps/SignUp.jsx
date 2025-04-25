@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-export function Login({ close, toggle, fadeClass }) {
+export function SignUp({ close, toggle, fadeClass }) {
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
         password: '',
     });
@@ -14,18 +15,30 @@ export function Login({ close, toggle, fadeClass }) {
     };
 
     return (
-
         <div className={`login ${fadeClass}`}>
             <button className='btn close' onClick={close}>X</button>
-            <div className='form-container'>
 
+
+            <div className='login-image'>
+                <img src="/ai2.jpg" alt="img" />
+            </div>
+            <div className='form-container'>
 
                 <form className="form">
                     <div className="form-group">
                         <input
                             type="text"
+                            name="name"
+                            placeholder="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="email"
                             name="email"
-                            placeholder="email"
+                            placeholder="Email"
                             value={formData.email}
                             onChange={handleChange}
                         />
@@ -39,18 +52,12 @@ export function Login({ close, toggle, fadeClass }) {
                             onChange={handleChange}
                         />
                     </div>
-                    <button className='btn' type="submit">Login</button>
+                    <button className='btn' type="submit">Sign Up</button>
                 </form>
                 <div>
-                    <p>don't have an account? <span className='span-link' onClick={toggle}>Sign up now</span></p>
-
+                    <p>already have an account? <span className='span-link' onClick={toggle}>Login now</span></p>
                 </div>
             </div>
-
-            <div className='login-image'>
-                <img src="/ai5.jpg" alt="img" />
-            </div>
         </div>
-
     );
 }

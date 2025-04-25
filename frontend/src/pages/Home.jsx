@@ -1,7 +1,30 @@
 
 import { Login } from "../cmps/Login"
-
+import { useState } from "react"
+import { SignUp } from "../cmps/Signup"
 export function Home() {
+
+    const [isOpen, setIsOpen] = useState(false)
+    const [isLogin, setIsLogin] = useState(true)
+    const [fadeClass, setFadeClass] = useState('fade-in');
+
+    function handleClose() {
+        setFadeClass('fade-out');
+        setTimeout(() => {
+            setIsOpen(false);
+            setFadeClass('fade-in'); // reset for next time
+        }, 500); // match animation duration
+    }
+
+
+    function toggleISLogin() {
+        setIsLogin(prev => !prev)
+    }
+
+
+    function toggleIsOpen() {
+        setIsOpen(prev => !prev)
+    }
 
 
     return (
@@ -15,7 +38,7 @@ export function Home() {
                         <div className="right-side-container">
                             <h1><span>Quizzy</span> let us test you</h1>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam soluta libero saepe ea quisquam? Fuga aperiam similique architecto? Qui, veniam.</p>
-                            <button className='btn'>Start</button>
+                            <button className='btn' onClick={toggleIsOpen}>Start</button>
                         </div>
                     </div>
 
@@ -40,8 +63,17 @@ export function Home() {
 
 
             </div>
+            {isOpen && (
+                <>
+                    {isLogin ? (
+                        <Login close={handleClose} toggle={toggleISLogin} fadeClass={fadeClass} />
+                    ) : (
+                        <SignUp close={handleClose} toggle={toggleISLogin} fadeClass={fadeClass} />
+                    )}
+                </>
+            )}
 
-            <Login />
+
 
         </section>
     )
