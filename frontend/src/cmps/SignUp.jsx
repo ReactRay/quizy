@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useAuthStore } from '../store/useAuthStore';
+
 export function SignUp({ close, toggle, fadeClass }) {
     const [formData, setFormData] = useState({
         name: '',
@@ -7,12 +9,20 @@ export function SignUp({ close, toggle, fadeClass }) {
         password: '',
     });
 
+    const { signup } = useAuthStore()
+
     const handleChange = (e) => {
         setFormData((prev) => ({
             ...prev,
             [e.target.name]: e.target.value,
         }));
     };
+
+    async function handleSignUp(e) {
+        e.preventDefault()
+
+        await signup(formData)
+    }
 
     return (
         <div className={`login ${fadeClass}`}>
@@ -24,7 +34,7 @@ export function SignUp({ close, toggle, fadeClass }) {
             </div>
             <div className='form-container'>
 
-                <form className="form">
+                <form className="form" onSubmit={handleSignUp}>
                     <div className="form-group">
                         <input
                             type="text"

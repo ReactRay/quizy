@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { useAuthStore } from '../store/useAuthStore';
 
 export function Login({ close, toggle, fadeClass }) {
+
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
+
+
+    const { login } = useAuthStore()
 
     const handleChange = (e) => {
         setFormData((prev) => ({
@@ -13,6 +19,11 @@ export function Login({ close, toggle, fadeClass }) {
         }));
     };
 
+    async function handleLogin(e) {
+        e.preventDefault()
+        await login(formData)
+    }
+
     return (
 
         <div className={`login ${fadeClass}`}>
@@ -20,7 +31,7 @@ export function Login({ close, toggle, fadeClass }) {
             <div className='form-container'>
 
 
-                <form className="form">
+                <form className="form" onSubmit={handleLogin}>
                     <div className="form-group">
                         <input
                             type="text"
