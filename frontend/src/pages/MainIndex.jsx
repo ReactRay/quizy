@@ -1,17 +1,19 @@
 
-
+import { useAuthStore } from "../store/useAuthStore"
 
 export function MainIndex() {
 
 
+    const { authUser, logout } = useAuthStore()
 
 
     return (
         <section className="main-page">
             <div className="container">
                 <div className="profile-flex">
-                    <div className="profile info">
+                    <div className="profile-info">
 
+                        <h3>{authUser.name}</h3>
 
                     </div>
                     <div>
@@ -19,6 +21,45 @@ export function MainIndex() {
                             "its a beautiful day today"
                         </h2>
                     </div>
+                    <div>
+
+                        <button onClick={logout}
+                            className="btn">Logout</button>
+                    </div>
+                </div>
+
+                <div className="guide-flex">
+                    <div className="guide-item">
+                        <p>
+                            put your input down below
+                        </p>
+                    </div>
+
+                    <div className="guide-item">
+                        <p>
+                            Ai will generate questions depending on your chosen topic
+                        </p>
+                    </div>
+
+                    <div className="guide-item">
+                        <p>
+                            Do your best and test your self
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div className="ai-prompt">
+
+                    <h2>pick a topic to learn today !</h2>
+
+                    <form>
+                        <input type="text" />
+                        <button>let's learn</button>
+                    </form>
+
+
                 </div>
 
 
