@@ -26,6 +26,7 @@
       .right-side {
         height: 100%;
         flex: 1;
+        animation: appear-zoom 2.3s;
 
         &-container {
           padding: 2rem;
@@ -56,6 +57,7 @@
         background-color: $color-box-bg;
         border-radius: 8px;
         box-shadow: 0 2rem 7rem rgba($color-dark, 0.2);
+        animation: appear-right 2.3s;
 
         &-flex {
           display: flex;
@@ -78,6 +80,7 @@
               top: 1rem;
               width: 19rem;
               height: auto;
+              animation: appear-top 2.5s;
             }
 
             .img2 {
@@ -120,5 +123,38 @@
 
   .left-side-flex {
     flex-direction: column;
+  }
+}
+
+@keyframes appear-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

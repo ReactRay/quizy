@@ -106,7 +106,7 @@
 }
 
 .fade-in {
-  animation: fadeIn 1.5s forwards;
+  animation: fadeIn 0.8s forwards;
   animation-fill-mode: backwards;
 }
 
@@ -114,12 +114,3 @@
   animation: fadeOut 0.8s forwards;
   animation-fill-mode: backwards;
 }
-
-$color-primary: #2d2926;
-$color-button-bg: #2d2926;
-$color-button-text: #ffffff;
-$color-box-bg: #f2e9e4;
-
-$color-grey: #777;
-$color-dark: #000;
-$color-white: #fff;

@@ -25,6 +25,7 @@
       border-radius: 1rem;
       box-shadow: 0 1rem 2rem rgba($color-dark, 0.2);
       margin-bottom: 2rem;
+      animation: appear-zoom 1.9s;
 
       .btn {
         background-color: $color-button-bg;
@@ -33,6 +34,7 @@
         border: none;
         cursor: pointer;
         transition: all 0.3s ease;
+        animation: appear-left 2.1s;
 
         &:hover {
           background-color: darken($color-button-bg, 10%);
@@ -43,6 +45,7 @@
     .welcome {
       text-align: center;
       margin-bottom: 2rem;
+      animation: appear-right 2.5s;
 
       h2 {
         font-size: 2.5rem;
@@ -57,6 +60,7 @@
       display: flex;
       gap: 1rem;
       margin-bottom: 2rem;
+      animation: appear-right 2.5s;
 
       .guide-item {
         flex: 1;
@@ -81,6 +85,7 @@
     .ai-prompt {
       display: flex;
       justify-content: center;
+      animation: appear-left 2.5s;
 
       form {
         display: flex;
@@ -163,5 +168,38 @@
         font-weight: 700;
       }
     }
+  }
+}
+
+@keyframes appear-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
