@@ -11,7 +11,7 @@ export const useAuthStore = create((set, get) => ({
   authUser: null,
   isLoading: false,
   isCheckingAuth: true,
-  questions: [...questions],
+  questions: [],
   currentIndex: 0,
   finishScreen: false,
   currentAnswer: null,
