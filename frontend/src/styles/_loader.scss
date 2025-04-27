@@ -1,0 +1,37 @@
+@use './globals' as *;
+
+.loader-layout {
+  height: 100dvh;
+  background: linear-gradient(
+    to right bottom,
+    rgba(darken($color-box-bg, 20%), 1),
+    rgba(darken($color-box-bg, 20%), 0.5)
+  );
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 8rem;
+  height: 8rem;
+  border: 6px solid rgba($color-box-bg, 0.9);
+  border-top: 6px solid rgba($color-primary, 1);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

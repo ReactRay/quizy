@@ -1,7 +1,6 @@
 import { useAuthStore } from "../store/useAuthStore"
-import { questions } from "../lib/questions.js"
 export function QuizzScreen() {
-    const { currentIndex, nextQuestion, currentAnswer, pickAnswer } = useAuthStore()
+    const { currentIndex, nextQuestion, currentAnswer, pickAnswer, questions } = useAuthStore()
 
     if (!questions.length) return null
 

@@ -2,6 +2,8 @@ import { create } from 'zustand'
 import { myAxios } from '../lib/axios.js'
 import toast from 'react-hot-toast'
 
+import { questions } from '../lib/questions.js'
+
 const BASE_URL =
   import.meta.env.MODE === 'development' ? 'http://localhost:5000' : '/'
 
@@ -9,7 +11,7 @@ export const useAuthStore = create((set, get) => ({
   authUser: null,
   isLoading: false,
   isCheckingAuth: true,
-  questions: [],
+  questions: [...questions],
   currentIndex: 0,
   finishScreen: false,
   currentAnswer: null,
@@ -106,7 +108,6 @@ export const useAuthStore = create((set, get) => ({
 
   resetQuiz: () => {
     set({
-      questions: [],
       currentIndex: 0,
       finishScreen: false,
     })
@@ -117,5 +118,9 @@ export const useAuthStore = create((set, get) => ({
 
   pickAnswer: (index) => {
     set({ currentAnswer: index })
+  },
+
+  goHome: () => {
+    set({ questions: [], finishScreen: false })
   },
 }))

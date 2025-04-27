@@ -3,13 +3,12 @@ import { useAuthStore } from "../store/useAuthStore"
 import { useState, useRef } from "react"
 import { UserProfile } from "../cmps/UserProfile"
 import Loader from '../cmps/Loader'
-import { questions } from "../lib/questions"
 import { QuizzScreen } from "./QuizzScreen"
 import { FinishScreen } from "./FinishScreen"
 
 
 export function MainIndex() {
-    const { authUser, logout, fetchQuestions, isLoading, finishScreen } = useAuthStore()
+    const { authUser, logout, fetchQuestions, isLoading, finishScreen, questions } = useAuthStore()
     const [topic, setTopic] = useState('')
 
     async function handleSubmit(e) {
