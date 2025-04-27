@@ -1,4 +1,5 @@
 
+import { UserProfile } from "../cmps/UserProfile"
 import { useAuthStore } from "../store/useAuthStore"
 
 export function MainIndex() {
@@ -11,22 +12,12 @@ export function MainIndex() {
         <section className="main-page">
             <div className="container">
                 <div className="profile-flex">
-                    <div className="profile-info">
+                    <UserProfile />
 
-                        <h3>{authUser.name}</h3>
-
-                    </div>
-                    <div>
-                        <h2>
-                            "its a beautiful day today"
-                        </h2>
-                    </div>
-                    <div>
-
-                        <button onClick={logout}
-                            className="btn">Logout</button>
-                    </div>
+                    <button onClick={logout}
+                        className="btn">Logout</button>
                 </div>
+
 
                 <div className="guide-flex">
                     <div className="guide-item">
@@ -52,19 +43,18 @@ export function MainIndex() {
 
                 <div className="ai-prompt">
 
-                    <h2>pick a topic to learn today !</h2>
 
-                    <form>
-                        <input type="text" />
-                        <button>let's learn</button>
+                    <form >
+                        <input type="text" placeholder="pick a topic " />
+                        <button className="btn">let's learn</button>
                     </form>
 
 
                 </div>
 
-
             </div>
 
-        </section>
+
+        </section >
     )
 }
