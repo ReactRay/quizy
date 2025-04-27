@@ -9,6 +9,10 @@ export const useAuthStore = create((set, get) => ({
   authUser: null,
   isLoading: false,
   isCheckingAuth: true,
+  questions: [],
+  currentIndex: 0,
+  finishScreen: false,
+  currentAnswer: null,
 
   checkAuth: async () => {
     try {
@@ -72,5 +76,46 @@ export const useAuthStore = create((set, get) => ({
     } finally {
       set({ isLoading: false })
     }
+  },
+
+  fetchQuestions: async (data) => {
+    set({ isLoading: true })
+
+    try {
+      const res = await myAxios.post('/quizz/generate', data)
+      console.log(res.data)
+      set({ questions: res.data })
+    } catch (error) {
+      console.log('error in fetching questions', error)
+      toast.error('could not fetch questions')
+    } finally {
+      set({ isLoading: false })
+    }
+  },
+
+  nextQuestion: () => {
+    set({ currentAnswer: null })
+    set((state) => {
+      const isLastQuestion = state.currentIndex + 1 >= 5
+      if (isLastQuestion) {
+        return { finishScreen: true }
+      }
+      return { currentIndex: state.currentIndex + 1 }
+    })
+  },
+
+  resetQuiz: () => {
+    set({
+      questions: [],
+      currentIndex: 0,
+      finishScreen: false,
+    })
+  },
+  goToFinishScreen: () => {
+    set({ finishScreen: true })
+  },
+
+  pickAnswer: (index) => {
+    set({ currentAnswer: index })
   },
 }))

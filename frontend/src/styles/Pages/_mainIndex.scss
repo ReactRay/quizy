@@ -1,21 +1,12 @@
 @use '../globals' as *;
 
-$color-primary: #2d2926;
-$color-button-bg: #2d2926;
-$color-button-text: #ffffff;
-$color-box-bg: #f2e9e4;
-
-$color-grey: #777;
-$color-dark: #000;
-$color-white: #fff;
-
 .main-page {
   height: 100dvh;
-  background: linear-gradient(rgba(#384c53, 0.6), rgba($color-box-bg, 0.9)),
+  background: linear-gradient(rgba(#121b1f, 0.6), rgba($color-dark, 0.5)),
     url('ai2.jpg');
   background-size: cover;
-  object-fit: cover;
   background-position: center;
+  color: $color-white;
 
   .container {
     height: 100%;
@@ -23,95 +14,134 @@ $color-white: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    backdrop-filter: blur(3px);
 
     .profile-flex {
       display: flex;
       justify-content: space-between;
-      border-radius: 4px;
-      padding: 2rem;
-      align-items: flex-start;
-      background-color: rgba($color-box-bg, $alpha: 0.4);
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba($color-box-bg, 0.4);
+      border-radius: 1rem;
+      box-shadow: 0 1rem 2rem rgba($color-dark, 0.2);
+      margin-bottom: 2rem;
 
-      h3 {
-        font-size: 2rem;
+      .btn {
+        background-color: $color-button-bg;
+        color: $color-button-text;
+      }
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 2.5rem;
+        color: $color-white;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: rgba($color-white, 0.8);
       }
     }
 
     .guide-flex {
       display: flex;
       gap: 1rem;
-      padding-block: 2rem;
-      color: $color-button-text;
+      margin-bottom: 2rem;
 
       .guide-item {
-        background-color: rgba($color-box-bg, $alpha: 0.4);
-        border-radius: 4px;
-        padding: 2rem;
         flex: 1;
+        background-color: rgba($color-box-bg, 0.4);
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba($color-dark, 0.2);
         text-align: center;
-        align-content: center;
-        box-shadow: 0 2rem 5rem rgba($color-dark, $alpha: 0.3);
-        transition: all 0.5s;
+        transition: transform 0.3s ease;
 
         &:hover {
-          transform: translateY(-0.5rem);
+          transform: translateY(-0.3rem);
         }
+
         p {
-          font-size: 1.2rem;
-          font-weight: 700;
-          line-height: 1.3;
+          font-size: 1.1rem;
+          color: $color-dark;
+        }
+      }
+    }
+
+    .ai-prompt {
+      display: flex;
+      justify-content: center;
+
+      form {
+        display: flex;
+        width: 50%;
+        background-color: rgba($color-white, 0.2);
+        border-radius: 2rem;
+        overflow: hidden;
+        box-shadow: 0 1rem 2rem rgba($color-dark, 0.2);
+
+        input {
+          flex: 1;
+          padding: 1rem;
+          border: none;
+          background: transparent;
+          color: $color-white;
+
+          &::placeholder {
+            color: rgba($color-white, 0.8);
+          }
+        }
+
+        button {
+          background-color: $color-button-bg;
+          color: $color-button-text;
+          padding: 0 2rem;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: darken($color-button-bg, 10%);
+          }
         }
       }
     }
   }
 }
 
-.ai-prompt {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-
-  form {
-    width: 100%;
-    display: flex;
-
-    input {
-      width: 100%;
-      padding: 1rem 1rem;
-      border: 1px solid transparent;
-      background-color: rgba($color-white, $alpha: 0.4);
-    }
-
-    button {
-      width: 20%;
-      border-radius: 0;
-    }
-  }
-}
-
 .user-profile {
-  padding: 1.25rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(236, 235, 235, 0.05);
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+  background-color: rgba($color-white, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba($color-dark, 0.2);
 
   input {
-    opacity: 0;
     display: none;
   }
 
   img {
-    height: 5rem;
     width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 
     &:hover {
       transform: scale(1.05);
+    }
+
+    &.loading {
+      opacity: 0.5;
+      pointer-events: none;
+      filter: grayscale(80%);
     }
   }
 
@@ -119,20 +149,13 @@ $color-white: #fff;
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 0.2rem;
-    border-radius: 8px;
-    background-color: rgba($color-white, $alpha: 0.3);
 
     li {
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
+      color: $color-white;
 
       &:first-child {
-        font-weight: 400;
         font-size: 1.5rem;
+        font-weight: 700;
       }
     }
   }

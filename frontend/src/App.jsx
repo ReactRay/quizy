@@ -29,9 +29,6 @@ function App() {
       <Routes>
         <Route path="/" element={!authUser ? <Home /> : <Navigate to="/home" />} />
         <Route path="/home" element={authUser ? <MainIndex /> : <Navigate to="/" />} />
-
-
-
       </Routes>
 
       <Toaster />
