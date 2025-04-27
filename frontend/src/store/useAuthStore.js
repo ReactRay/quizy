@@ -11,10 +11,11 @@ export const useAuthStore = create((set, get) => ({
   authUser: null,
   isLoading: false,
   isCheckingAuth: true,
-  questions: [],
+  questions: [...questions],
   currentIndex: 0,
   finishScreen: false,
   currentAnswer: null,
+  score: 0,
 
   checkAuth: async () => {
     try {
@@ -110,6 +111,7 @@ export const useAuthStore = create((set, get) => ({
     set({
       currentIndex: 0,
       finishScreen: false,
+      score: 0,
     })
   },
   goToFinishScreen: () => {
@@ -117,10 +119,21 @@ export const useAuthStore = create((set, get) => ({
   },
 
   pickAnswer: (index) => {
+    const { questions, currentIndex, checkAnswer } = get()
+    const correctIndex = questions[currentIndex].correctOption
+
     set({ currentAnswer: index })
+    checkAnswer(index, correctIndex)
   },
 
   goHome: () => {
-    set({ questions: [], finishScreen: false })
+    set({ questions: [], finishScreen: false, score: 0 })
+  },
+  checkAnswer: (selectedIndex, correctIndex) => {
+    if (selectedIndex === correctIndex) {
+      set((state) => ({
+        score: state.score + 1,
+      }))
+    }
   },
 }))
