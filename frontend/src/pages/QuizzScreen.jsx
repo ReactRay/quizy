@@ -3,8 +3,6 @@ import { questions } from "../lib/questions.js"
 export function QuizzScreen() {
     const { currentIndex, nextQuestion, currentAnswer, pickAnswer } = useAuthStore()
 
-
-
     if (!questions.length) return null
 
     const currentQuestion = questions[currentIndex]
@@ -12,15 +10,37 @@ export function QuizzScreen() {
 
     return (
         <section className="quizz-screen">
-            <h1>{currentAnswer}</h1>
             <div className="question-box">
                 <h2 className="question-text">{currentQuestion.question}</h2>
-                <ul className="options-list">
-                    {currentQuestion.options.map((option, idx) => (
-                        <li className={currentAnswer == idx ? 'picked' : 'option'} key={idx} onClick={() => pickAnswer(idx)}>{option}</li>
-                    ))}
-                </ul>
-                <button className="btn next-btn" onClick={nextQuestion}>Next</button>
+                <div className="options-list">
+                    {currentQuestion.options.map((option, idx) => {
+                        const isPicked = currentAnswer === idx
+                        const isCorrect = idx === currentQuestion.correctOption
+
+                        let optionClass = 'option'
+                        if (currentAnswer != null) {
+                            optionClass += isCorrect ? ' correct' : isPicked ? ' wrong' : ''
+                        }
+
+                        return (
+                            <button
+                                key={idx}
+                                className={optionClass}
+                                disabled={currentAnswer != null}
+                                onClick={() => pickAnswer(idx)}
+                            >
+                                {option}
+                            </button>
+                        )
+                    })}
+                </div>
+                <button
+                    disabled={currentAnswer == null}
+                    className={`btn next-btn ${currentAnswer == null ? 'hide' : ''}`}
+                    onClick={nextQuestion}
+                >
+                    Next
+                </button>
             </div>
         </section>
     )
