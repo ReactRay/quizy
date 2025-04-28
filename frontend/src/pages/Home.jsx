@@ -1,6 +1,6 @@
 import { Login } from "../cmps/Login"
 import { useState } from "react"
-import { SignUp } from "../cmps/Signup"
+import { SignUp } from "../cmps/SignUp"
 import { useAuthStore } from "../store/useAuthStore"
 import Loader from "../cmps/Loader"
 
